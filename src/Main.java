@@ -8,9 +8,9 @@ public class Main {
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         ExecutorService threadPool = Executors.newFixedThreadPool(stringsNumber);
         List<Future<Integer>> tasks = new ArrayList<>();
-        Callable<Integer> callable = new TextCallable(generateText("aab", 30_000));
 
         for (int i = 0; i < stringsNumber; i++) {
+            Callable<Integer> callable = new TextCallable(generateText("aab", 30_000));
             Future<Integer> future = threadPool.submit(callable);
             tasks.add(future);
         }
@@ -22,7 +22,8 @@ public class Main {
             }
         }
 
-        System.out.println(max);
+        System.out.println("Max Interval: " + max);
+        threadPool.shutdown();
     }
 
     public static String generateText(String letters, int length) {

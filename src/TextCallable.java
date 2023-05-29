@@ -33,5 +33,6 @@ public class TextCallable implements Callable<Integer> {
                 }
             }
         }
+        System.out.println(text.substring(0, 100) + " -> " + maxSize);
     }
 }
